@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Activity Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand">FitTrack<span>+</span></div>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#add-activity">Add Activity</a>
+      <a href="#history">History</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="welcome" id="dashboard">
+      <div>
+        <p class="eyebrow">YOUR HEALTH, YOUR JOURNEY</p>
+        <h1>Stay active. Stay healthy.</h1>
+        <p>Track your workouts and celebrate your progress every day.</p>
+      </div>
+      <div class="welcome-icon">🏃‍♀️</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-icon purple">🔥</div>
+        <p>Calories Burned Today</p>
+        <h2><span id="calories">0</span> <small>kcal</small></h2>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon blue">⏱️</div>
+        <p>Workout Duration</p>
+        <h2><span id="minutes">0</span> <small>min</small></h2>
+      </article>
+
+      <article class="stat-card">
+        <div class="stat-icon green">🏆</div>
+        <p>Activities Today</p>
+        <h2 id="activity-count">0</h2>
+      </article>
+    </section>
+
+    <section class="panel goal-panel">
+      <div class="section-heading">
+        <div>
+          <h2>Daily Workout Goal</h2>
+          <p>Set your daily exercise target in minutes.</p>
+        </div>
+        <strong id="goal-label">30 minutes</strong>
+      </div>
+
+      <div class="goal-controls">
+        <input type="number" id="goal-input" min="1"
+               max="1440" value="30" aria-label="Daily goal in minutes">
+        <button id="save-goal" type="button">Save Goal</button>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="goal-progress"></div>
+      </div>
+      <p class="progress-text" id="goal-message">0% completed</p>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel" id="add-activity">
+        <h2>Add New Activity</h2>
+        <p class="muted">Enter the details of your workout.</p>
+
+        <form id="activity-form">
+          <label for="activity">Activity Type</label>
+          <select id="activity" required>
+            <option value="Walking">Walking</option>
+            <option value="Running">Running</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Gym Workout">Gym Workout</option>
+            <option value="Yoga">Yoga</option>
+          </select>
+
+          <label for="duration">Duration (minutes)</label>
+          <input type="number" id="duration" min="1"
+                 max="1440" placeholder="e.g. 30" required>
+
+          <label for="activity-date">Activity Date</label>
+          <input type="date" id="activity-date" required>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" rows="3"
+                    placeholder="How did your workout go?"></textarea>
+
+          <button type="submit" class="primary-button">
+            + Add Activity
+          </button>
+        </form>
+        <p class="form-message" id="form-message" role="status"></p>
+      </section>
+
+      <section class="panel" id="progress">
+        <h2>Weekly Progress</h2>
+        <p class="muted">Workout minutes for the last 7 days.</p>
+        <div class="chart" id="weekly-chart"></div>
+        <div class="chart-legend">
+          <span></span> Workout minutes
+        </div>
+      </section>
+    </div>
+
+    <section class="panel history-panel" id="history">
+      <div class="section-heading">
+        <div>
+          <h2>Activity History</h2>
+          <p class="muted">Review your recorded workouts.</p>
+        </div>
+        <button class="clear-button" id="clear-history" type="button">
+          Clear All
+        </button>
+      </div>
+
+      <div id="activity-list" class="activity-list"></div>
+      <p id="empty-message" class="empty-message">
+        No activities yet. Add your first workout!
+      </p>
+    </section>
+
+    <footer>
+      <p>FitTrack+ · Your daily fitness companion</p>
+      <p>Calories are estimates, not medical measurements.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
